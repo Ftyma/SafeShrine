@@ -3,7 +3,7 @@ import "../styles/landing.css";
 import Typist from "react-typist";
 
 import { motion } from "framer-motion";
-import Home from "./Home";
+import Countdown from "./Countdown";
 import { useNavigate, Navigate } from "react-router-dom";
 
 const Landing = ({}) => {
@@ -26,9 +26,13 @@ const Landing = ({}) => {
 
         <span className="sub-title font-space text-4xl text-center">
           {" "}
-          To Safe Space{" "}
+          To Safe Space ...{" "}
         </span>
       </Typist>
+
+      <div>
+        <Countdown seconds={9} />
+      </div>
 
       {/* <div className="progressbar-container">
         <div className="progressbar">

@@ -3,6 +3,8 @@ import Landing from "./components/Landing";
 import { useRoutes } from "react-router-dom";
 import Home from "./components/Home";
 import Page1 from "./components/Page1";
+import Countdown from "./components/Countdown";
+import Delayed from "./components/Delayed";
 
 const App = () => {
   let element = useRoutes([

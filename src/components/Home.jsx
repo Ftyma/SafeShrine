@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "../styles/home.css";
 import { Link } from "react-router-dom";
 import Page1 from "./Page1";
+import Page2 from "./Page2";
 import Navbar from "./Navbar";
 
 const Home = () => {
@@ -14,7 +15,7 @@ const Home = () => {
         </div>
 
         <div className="box2">
-          <h1>box2</h1>
+          <Page2 />
         </div>
 
         <div className="box3">

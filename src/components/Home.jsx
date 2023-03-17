@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
 import Navbar from "./Navbar";
+import Page3 from "./page3";
 
 const Home = () => {
   return (
@@ -19,7 +20,7 @@ const Home = () => {
         </div>
 
         <div className="box3">
-          <h1>box3</h1>
+          <Page3 />
         </div>
       </div>
     </div>

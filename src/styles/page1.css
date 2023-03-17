@@ -1,0 +1,67 @@
+#Page1 {
+}
+
+.container {
+  background-color: antiquewhite;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px antiquewhite;
+
+  display: block;
+  flex-direction: row;
+  height: 100%;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bolder;
+
+  padding-top: 3rem;
+  padding-left: 2.5rem;
+}
+
+.myText {
+  height: 20rem;
+  width: 90%;
+  text-align: start;
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+}
+
+.textContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.email-container {
+  margin-left: 3rem;
+  margin-right: 2.5rem;
+}
+
+.date-container {
+  margin-left: 2.5rem;
+}
+
+.container1 {
+  display: flex;
+  margin-block: 2rem;
+}
+
+.btn {
+  background-color: white;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  border-radius: 8px;
+  float: right;
+
+  margin-right: 3rem;
+  margin-block: 2rem;
+
+  cursor: pointer;
+}
+
+.email {
+  width: 250px;
+}

@@ -40,3 +40,11 @@
   box-shadow: 0px 0px 5px #cc9dcd;
   border-radius: 5px;
 }
+
+.btn-p1 {
+  border-radius: 5px;
+  background-color: whitesmoke;
+
+  padding-inline: 10px;
+  padding-block: 5px;
+}

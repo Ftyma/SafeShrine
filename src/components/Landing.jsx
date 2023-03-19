@@ -26,7 +26,7 @@ const Landing = ({}) => {
 
         <span className="sub-title font-space text-4xl text-center">
           {" "}
-          To Safe Space ...{" "}
+          To Safe Space{" "}
         </span>
       </Typist>
 

@@ -18,6 +18,23 @@
 .sub-title {
   margin-top: 1rem;
   letter-spacing: 10px;
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  #landing {
+    display: flex;
+    margin: auto;
+  }
+
+  .title {
+    font-size: 50px;
+    text-align: center;
+  }
+  .sub-title {
+    font-size: 30px;
+    text-align: center;
+  }
 }
 
 .progressbar {

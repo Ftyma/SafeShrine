@@ -12,7 +12,7 @@
   position: relative;
   top: 15%;
   width: 80%;
-  height: 70%;
+  height: 400px;
 }
 
 .box1 {
@@ -42,9 +42,34 @@
 }
 
 .btn-p1 {
+  display: flex;
+  margin: auto;
+
   border-radius: 5px;
   background-color: whitesmoke;
 
   padding-inline: 10px;
   padding-block: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    display: grid;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    top: 5%;
+    height: 100%;
+  }
+
+  .box1 {
+    width: 90%;
+  }
+  .box2 {
+    width: 90%;
+    margin-block: 1rem;
+  }
+  .box3 {
+    width: 90%;
+  }
 }

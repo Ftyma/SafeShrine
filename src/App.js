@@ -7,6 +7,7 @@ import Countdown from "./components/Countdown";
 import Delayed from "./components/Delayed";
 import Page2 from "./components/Page2";
 import Page3 from "./components/page3";
+import Test from "./components/test";
 
 const App = () => {
   let element = useRoutes([
@@ -30,9 +31,13 @@ const App = () => {
       path: "/page3",
       element: <Page3 />,
     },
+    {
+      path: "/test",
+      element: <Test />,
+    },
   ]);
 
-  return <>{element}</>;
+  return <> {element}</>;
 };
 
 export default App;

@@ -4,6 +4,10 @@ module.exports = {
   mode: "jit",
   theme: {
     extend: {
+      colors: {
+        primary: "#ffc2c8",
+      },
+
       fontFamily: {
         custom1: ["Shantell Sans", "cursive"],
         playfair: ["Playfair Display", "serif"],

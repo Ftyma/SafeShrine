@@ -36,6 +36,12 @@ app.get("/get-letter/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const letter = await Letter.findById(id);
+
+    console.log(id);
+    if (!letter) {
+      return res.status(404).json({ message: "Item not found" });
+    }
+
     res.status(200).json(letter);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -47,6 +53,7 @@ app.delete("/delete-letter/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const letter = await Letter.findByIdAndDelete(id);
+
     if (!letter) {
       return res
         .status(400)

@@ -44,60 +44,8 @@ const Page1 = () => {
       });
   };
 
-  // function handleClick(event) {
-  //   event.preventDefault();
-  //   const newNote = {
-  //     text: input.text,
-  //     email: input.email,
-  //     date: input.date,
-  //   };
-  // axios.post("http://localhost:5000/create", newNote).then(() => {
-  //   alert("You have been added to the system!");
-  // });
-
-  // return fetch("http://localhost:5000/post-letter", {
-  //   method: "POST",
-  //   body: newNote,
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // })
-  //   .catch((error) => {
-  //     window.alert(error);
-  //     return;
-  //   })
-  //   .then((res) => console.log(res.json()))
-  //   .then(() => alert("added to system!"));
-
-  // const postURL = "http://localhost:5000/letter";
-  // fetch(postURL, {
-  //   method: "POST",
-  //   body: JSON.stringify({
-  //     text: input.text,
-  //     email: input.email,
-  //     date: input.date,
-  //   }),
-  // }).then(() => {
-  //   // Once posted, the user will be notified
-  //   alert("You have been added to the system!");
-  // });
-  // }
-
-  //Backend
-  // useEffect(() => {
-  //   fetchItems();
-  // }, []);
-
-  // const [items, setItems] = useState([]);
-
-  // const fetchItems = async () => {
-  //   const data = await fetch("/letter");
-  //   const items = await data.json();
-  //   setItems(items);
-  // };
-
   return (
-    <div id="Page1" className=" shadow">
+    <div id="Page1" className="shadow">
       <Navbar />
       <h1 className="header1 font-space font-semibold">
         Write an Email to Your Future Self

@@ -3,9 +3,9 @@
 }
 
 .container1 {
-  background-color: antiquewhite;
+  background-color: #dec4e3;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px antiquewhite;
+  box-shadow: 0px 0px 5px #dec4e3;
 
   display: grid;
   flex-direction: column;

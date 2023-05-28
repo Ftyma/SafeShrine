@@ -3,73 +3,35 @@ import axios from "axios";
 import Nav from "../components/Navbar";
 import "../styles/text.css";
 import { useNavigate } from "react-router-dom";
-import UpdateLetter from "./UpdateLetter";
 
 const Test = () => {
-  // const [backendData, setBackendData] = useState([{}]);
-  // const fetchItem = async () => {
-  //   const data = await fetch("/letter");
-  //   const backendData = await data.json();
-  //   setBackendData(backendData);
-  // };
-  // useEffect(() => {
-  //   fetchItem();
-  // }, []);
   const navigate = useNavigate();
-  const [letter, setLetter] = useState([]);
-  const [showUpdateModal, setShowUpdateModal] = useState(false);
-
-  const handleOnClose = () => setShowUpdateModal(false);
-  const [updatedLetter, setUpdateLetter] = useState({});
+  const [items, setItems] = useState([]);
+  //const [selectedItem, setSelectedItem] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     axios
       .get("/get-letter")
       .then((res) => {
-        console.log(res);
-        setLetter(res.data);
+        console.log(res.data);
+        setItems(res.data);
       })
-      .catch((err) => console.log(err));
-  });
+      .catch((err) => console.log("error fetching data", err));
+  }, []);
 
-  const deleteLetter = async (id) => {
-    //console.log(id);
+  const deleteLetter = (id) => {
     if (window.confirm("Are you sure you want to delete the user record?")) {
-      const res = await axios
+      const res = axios
         .delete(`/delete-letter/${id}`)
-        .then((res) => console.log(res))
         .then(() => {
+          console.log(res);
           alert(`Successfully deleted item ${id}`);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.log("error deleting item", error));
     }
-
-    //  window.location.reload();
+    window.location.reload();
   };
-
-  const updateLetter = (letter) => {
-    console.log(letter);
-
-    const obj = {
-      // id: id,
-      // text: text,
-    };
-
-    let oldLetter = JSON.parse(localStorage.getItem("letter"));
-    localStorage.setItem("letter", JSON.stringify([...oldLetter, ...obj]));
-  };
-
-  // const updateLetter = async (id) => {
-  //   const res = await axios
-  //     .put(`/update-letter/${id}`)
-  //     .then((res) => console.log(res))
-  //     .then(() => {
-  //       <UpdateLetter />;
-  //     })
-  //     .catch((error) => console.log(error));
-
-  //   setUpdateLetter(letter);
-  // };
 
   return (
     <div id="test">
@@ -78,40 +40,57 @@ const Test = () => {
         User Submission
       </h1>
 
-      {letter ? (
+      {items ? (
         <>
           <div className="submission-container">
             <table>
-              <tr className="font-space font-semibold">
-                <th>Email</th>
-                <th>Date</th>
-                <th>Letter</th>
-                <th>Action</th>
-              </tr>
+              <thead>
+                <tr className="font-space font-semibold">
+                  <th>Email</th>
+                  <th>Date</th>
+                  <th>Letter</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {items.map((item, key) => (
+                  <>
+                    <tr
+                      key={key}
+                      //onClick={() => handleItemClick(item)}
+                      className="font-space"
+                    >
+                      <td>{item.email}</td>
+                      <td>{item.date}</td>
+                      <td>{item.text}</td>
+                      <td>
+                        <button
+                          onClick={() => deleteLetter(item._id)}
+                          className="btn-delete"
+                        >
+                          Delete
+                        </button>
+                        {/* <button
+                          className="btn-edit"
+                          onClick={() => handleItemClick(item)}
+                        >
+                          Edit
+                        </button> */}
 
-              {letter.map((list) => (
-                <>
-                  <tr key={list._id} className="font-space">
-                    <td>{list.email}</td>
-                    <td>{list.date}</td>
-                    <td>{list.text}</td>
-                    <td>
-                      <button
-                        onClick={() => deleteLetter(list._id)}
-                        className="btn-delete"
-                      >
-                        Delete
-                      </button>
-                      <button
-                        onClick={() => updateLetter(list)}
-                        className="btn-edit"
-                      >
-                        Edit
-                      </button>
-                    </td>
-                  </tr>
-                </>
-              ))}
+                        {/* {selectedItem && (
+                          <PopupModal
+                            selectedItem={items.find(
+                              (item) => item.id === selectedItem
+                            )}
+                            onUpdate={handleUpdate}
+                            onClose={handleModalClose}
+                          ></PopupModal>
+                        )} */}
+                      </td>
+                    </tr>
+                  </>
+                ))}
+              </tbody>
             </table>
           </div>
         </>
@@ -121,7 +100,11 @@ const Test = () => {
       <button onClick={() => navigate(-1)} className="btn-back">
         GO BACK
       </button>
-      <UpdateLetter onClose={handleOnClose} visible={showUpdateModal} />
+      {/* visible={showUpdateModal}
+      <UpdateLetter
+        visible={showUpdateModal}
+        onClose={handleOnClose}
+      ></UpdateLetter> */}
     </div>
   );
 };

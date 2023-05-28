@@ -35,6 +35,10 @@ const App = () => {
       path: "/test",
       element: <Test />,
     },
+    // {
+    //   path: "/update",
+    //   element: <UpdateLetter />,
+    // },
   ]);
 
   return <> {element}</>;

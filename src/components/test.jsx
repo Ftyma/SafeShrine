@@ -3,11 +3,12 @@ import axios from "axios";
 import Nav from "../components/Navbar";
 import "../styles/text.css";
 import { useNavigate } from "react-router-dom";
+import PopupModal from "./PopupModal";
 
 const Test = () => {
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
-  //const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
@@ -31,6 +32,31 @@ const Test = () => {
         .catch((error) => console.log("error deleting item", error));
     }
     window.location.reload();
+  };
+
+  const handleItemClick = (item) => {
+    setShowPopup(true);
+    setSelectedItem(item);
+  };
+
+  //close popup
+  const handleModalClose = () => {
+    setShowPopup(false);
+  };
+
+  const handleUpdate = (formData) => {
+    console.log("item id", selectedItem._id);
+    console.log("form data", formData);
+    axios
+      .put(`update-letter/${selectedItem._id}`, formData)
+      .then((res) => {
+        //handle successful update
+        console.log("Item update:", res.data);
+        setShowPopup(false);
+      })
+      .catch((error) => {
+        console.error("Error update item:", error);
+      });
   };
 
   return (
@@ -57,7 +83,7 @@ const Test = () => {
                   <>
                     <tr
                       key={key}
-                      //onClick={() => handleItemClick(item)}
+                      onClick={() => handleItemClick(item)}
                       className="font-space"
                     >
                       <td>{item.email}</td>
@@ -70,22 +96,12 @@ const Test = () => {
                         >
                           Delete
                         </button>
-                        {/* <button
+                        <button
                           className="btn-edit"
                           onClick={() => handleItemClick(item)}
                         >
                           Edit
-                        </button> */}
-
-                        {/* {selectedItem && (
-                          <PopupModal
-                            selectedItem={items.find(
-                              (item) => item.id === selectedItem
-                            )}
-                            onUpdate={handleUpdate}
-                            onClose={handleModalClose}
-                          ></PopupModal>
-                        )} */}
+                        </button>
                       </td>
                     </tr>
                   </>
@@ -93,6 +109,14 @@ const Test = () => {
               </tbody>
             </table>
           </div>
+          {selectedItem && (
+            <PopupModal
+              selectedItem={selectedItem._id}
+              onUpdate={handleUpdate}
+              onClose={handleModalClose}
+              visible={showPopup}
+            ></PopupModal>
+          )}
         </>
       ) : (
         ""
@@ -100,11 +124,6 @@ const Test = () => {
       <button onClick={() => navigate(-1)} className="btn-back">
         GO BACK
       </button>
-      {/* visible={showUpdateModal}
-      <UpdateLetter
-        visible={showUpdateModal}
-        onClose={handleOnClose}
-      ></UpdateLetter> */}
     </div>
   );
 };

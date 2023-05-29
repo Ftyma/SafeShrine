@@ -6,6 +6,9 @@ module.exports = {
     extend: {
       colors: {
         primary: "#ffc2c8",
+        deleteBtn: "#DD5568",
+        editBtn: "#EEA743",
+        backBtn: "#BBDCDE",
       },
 
       fontFamily: {

@@ -1,18 +1,11 @@
 #test {
-  padding-bottom: 5rem;
-}
-
-.submission-container {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
 }
 
 table {
   border: 2px solid black;
   width: 90%;
   margin: auto;
+  margin-bottom: 10rem;
 }
 
 th {
@@ -23,29 +16,4 @@ td {
   text-align: start;
   padding: 1rem;
   border: 1px solid black;
-}
-
-.btn-delete {
-  border: 1px solid;
-  border-radius: 0.5rem;
-  width: 80px;
-  margin-bottom: 1rem;
-  background-color: palevioletred;
-}
-
-.btn-edit {
-  border: 1px solid;
-  border-radius: 0.5rem;
-  width: 80px;
-  margin-bottom: 1rem;
-  background-color: lightgoldenrodyellow;
-}
-
-.btn-back {
-  border: 1px solid;
-  border-radius: 0.5rem;
-  width: 100px;
-  background-color: lightblue;
-  float: right;
-  margin: 4rem;
 }

@@ -20,8 +20,7 @@ const Navbar = () => {
   return (
     <nav
       id="navbar"
-      className={`flex sticky top-0 bg-white w-full justify-between px-5 py-5 shadow-md opacity-70`}
-      fill="white"
+      className={`fixed inset-0 z-50 flex bg-white w-full h-16 justify-between px-5 py-5 shadow-md opacity-70`}
     >
       <header className="flex" onClick={goHome}>
         <img src={heart} className="w-7 h-7 mr-2 " />

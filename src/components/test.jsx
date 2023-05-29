@@ -11,6 +11,7 @@ const Test = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
 
+  //fetch item
   useEffect(() => {
     axios
       .get("/get-letter")
@@ -21,6 +22,7 @@ const Test = () => {
       .catch((err) => console.log("error fetching data", err));
   }, []);
 
+  //delete item
   const deleteLetter = async (id) => {
     if (window.confirm("Are you sure you want to delete the user record?")) {
       await axios
@@ -28,12 +30,13 @@ const Test = () => {
         .then(() => {
           console.log("Deleted item: ", id);
           alert(`Successfully deleted item ${id}`);
+          window.location.reload();
         })
         .catch((error) => console.log("error deleting item", error));
     }
-    window.location.reload();
   };
 
+  //event handling when click on item
   const handleItemClick = (item) => {
     setShowPopup(true);
     setSelectedItem(item);
@@ -45,6 +48,7 @@ const Test = () => {
     setShowPopup(false);
   };
 
+  //handle update
   const handleUpdate = async (formData) => {
     await axios
       .put(`update-letter/${selectedItem._id}`, formData)
@@ -53,23 +57,23 @@ const Test = () => {
         console.log("Item update:", res.data);
         setShowPopup(false);
         setSelectedItem({ ...selectedItem, ...formData });
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Error update item:", error);
       });
-    window.location.reload();
   };
 
   return (
     <div id="test">
       <Nav />
-      <h1 className="text-center font-space font-semibold text-2xl mt-12 mb-5">
+      <h1 className="text-center font-space font-semibold text-2xl mt-28 mb-5">
         User Submission
       </h1>
 
       {items ? (
         <>
-          <div className="submission-container">
+          <div className="relative w-100 h-1/2 justify-items-center">
             <table>
               <thead>
                 <tr className="font-space font-semibold">
@@ -91,15 +95,15 @@ const Test = () => {
                       <td>{item.date}</td>
                       <td>{item.text}</td>
                       <td>
-                        <div className="flex justify-center">
+                        <div className="flex flex-col justify-center">
                           <button
                             onClick={() => deleteLetter(item._id)}
-                            className="btn-delete mr-2"
+                            className="mr-2 border border-black mb-4 bg-deleteBtn rounded-md w-20"
                           >
                             Delete
                           </button>
                           <button
-                            className="btn-edit"
+                            className="border border-black mb-4 bg-editBtn rounded-md w-20"
                             onClick={() => handleItemClick(item)}
                           >
                             Edit
@@ -111,7 +115,16 @@ const Test = () => {
                 ))}
               </tbody>
             </table>
+            <div className="mt-5">
+              <button
+                onClick={() => navigate(-1)}
+                className="absolute w-20 bottom-0 right-16 border border-black mb-16 bg-backBtn rounded-md"
+              >
+                Return
+              </button>
+            </div>
           </div>
+
           {selectedItem && (
             <PopupModal
               selectedItem={selectedItem}
@@ -124,9 +137,6 @@ const Test = () => {
       ) : (
         ""
       )}
-      <button onClick={() => navigate(-1)} className="btn-back">
-        GO BACK
-      </button>
     </div>
   );
 };

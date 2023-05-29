@@ -3,7 +3,7 @@
 }
 
 .container1 {
-  background-color: #dec4e3;
+  background-color: #e9f7ef;
   border-radius: 5px;
   box-shadow: 0px 0px 5px #dec4e3;
 
@@ -16,12 +16,13 @@
   width: 90%;
 
   overflow: hidden;
+  border: 2px solid black;
 }
 
 .header1 {
   font-size: 30px;
   text-align: center;
-  margin-top: 4rem;
+  margin-top: 9rem;
   margin-bottom: 2rem;
 }
 
@@ -73,6 +74,7 @@
   float: right;
   border-radius: 8px;
   cursor: pointer;
+  border: 1px solid black;
 }
 
 .email {

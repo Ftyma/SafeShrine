@@ -17,13 +17,16 @@ const Home = () => {
     <div id="home">
       <Navbar />
       <div className="container">
-        <div className="box1">
+        <div className="box1 hover:shadow-lg hover:scale-105">
           <div className="p-8">
             <h1 className="font-space font-semibold text-2xl text-center">
               Write To Your Future-Self
             </h1>
             <p className="pt-5">What do you want to tell your future self?</p>
-            <button className="btn-p1 font-space mt-5" onClick={goPage1}>
+            <button
+              className="btn-p1 shadow-md hover:shadow-lg font-space border border-black"
+              onClick={goPage1}
+            >
               Click Me
             </button>
           </div>

@@ -47,7 +47,7 @@ const Page1 = () => {
   return (
     <div id="Page1" className="shadow">
       <Navbar />
-      <h1 className="header1 font-space font-semibold">
+      <h1 className="header1 font-space font-semibold mt-12">
         Write an Email to Your Future Self
       </h1>
 
@@ -94,7 +94,11 @@ const Page1 = () => {
               </select>
             </div>
           </div>
-          <button type="submit" className="btn-send" onClick={handleClick}>
+          <button
+            type="submit"
+            className="btn-send shadow-md hover:shadow-lg"
+            onClick={handleClick}
+          >
             Send to the Future
           </button>
         </form>

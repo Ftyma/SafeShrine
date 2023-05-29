@@ -23,10 +23,9 @@ const Test = () => {
 
   const deleteLetter = (id) => {
     if (window.confirm("Are you sure you want to delete the user record?")) {
-      const res = axios
+      axios
         .delete(`/delete-letter/${id}`)
         .then(() => {
-          console.log(res);
           alert(`Successfully deleted item ${id}`);
         })
         .catch((error) => console.log("error deleting item", error));
@@ -37,6 +36,7 @@ const Test = () => {
   const handleItemClick = (item) => {
     setShowPopup(true);
     setSelectedItem(item);
+    console.log("Selected Item:", item);
   };
 
   //close popup
@@ -45,18 +45,18 @@ const Test = () => {
   };
 
   const handleUpdate = (formData) => {
-    console.log("item id", selectedItem._id);
-    console.log("form data", formData);
     axios
       .put(`update-letter/${selectedItem._id}`, formData)
       .then((res) => {
-        //handle successful update
+        //handle successful updat
         console.log("Item update:", res.data);
         setShowPopup(false);
+        setSelectedItem({ ...selectedItem, ...formData });
       })
       .catch((error) => {
         console.error("Error update item:", error);
       });
+    window.location.reload();
   };
 
   return (
@@ -83,25 +83,27 @@ const Test = () => {
                   <>
                     <tr
                       key={key}
-                      onClick={() => handleItemClick(item)}
+                      //onClick={() => handleItemClick(item)}
                       className="font-space"
                     >
                       <td>{item.email}</td>
                       <td>{item.date}</td>
                       <td>{item.text}</td>
                       <td>
-                        <button
-                          onClick={() => deleteLetter(item._id)}
-                          className="btn-delete"
-                        >
-                          Delete
-                        </button>
-                        <button
-                          className="btn-edit"
-                          onClick={() => handleItemClick(item)}
-                        >
-                          Edit
-                        </button>
+                        <div className="flex justify-center">
+                          <button
+                            onClick={() => deleteLetter(item._id)}
+                            className="btn-delete mr-2"
+                          >
+                            Delete
+                          </button>
+                          <button
+                            className="btn-edit"
+                            onClick={() => handleItemClick(item)}
+                          >
+                            Edit
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   </>
@@ -111,7 +113,7 @@ const Test = () => {
           </div>
           {selectedItem && (
             <PopupModal
-              selectedItem={selectedItem._id}
+              selectedItem={selectedItem}
               onUpdate={handleUpdate}
               onClose={handleModalClose}
               visible={showPopup}

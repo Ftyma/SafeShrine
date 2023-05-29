@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const PopupModal = ({ selectedItem, onUpdate, onClose, visible }) => {
-  const [formData, setFormData] = useState({
-    email: selectedItem.email || "",
-    date: selectedItem.date || "",
-    text: selectedItem.text || "",
-  });
+  const [formData, setFormData] = useState(selectedItem);
+
+  useEffect(() => {
+    setFormData(selectedItem);
+  }, [selectedItem]);
 
   if (!visible) {
     return null;
   }
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

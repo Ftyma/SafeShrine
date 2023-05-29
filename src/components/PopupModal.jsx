@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 const PopupModal = ({ selectedItem, onUpdate, onClose, visible }) => {
   const [formData, setFormData] = useState(selectedItem);
 
+  //update the local state when the selectedItem prop changes
   useEffect(() => {
-    setFormData(selectedItem);
+    // Initialize with an empty object if selectedData is undefined
+    setFormData(selectedItem || {});
   }, [selectedItem]);
 
   if (!visible) {
@@ -39,7 +41,7 @@ const PopupModal = ({ selectedItem, onUpdate, onClose, visible }) => {
             type="text"
             id="email"
             name="email"
-            value={formData.email}
+            value={formData.email || ""}
             onChange={handleChange}
           />
         </div>
@@ -50,7 +52,7 @@ const PopupModal = ({ selectedItem, onUpdate, onClose, visible }) => {
             type="text"
             id="date"
             name="date"
-            value={formData.date}
+            value={formData.date || ""}
             onChange={handleChange}
           />
         </div>
@@ -61,7 +63,7 @@ const PopupModal = ({ selectedItem, onUpdate, onClose, visible }) => {
             type="text"
             id="text"
             name="text"
-            value={formData.text}
+            value={formData.text || ""}
             onChange={handleChange}
             className="form-control flex border border-solid w-full h-full"
           />

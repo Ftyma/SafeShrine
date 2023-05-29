@@ -31,6 +31,7 @@ const Navbar = () => {
         <ul>
           {navMenu.map((list, i) => (
             <NavLink
+              key={i}
               to={list.link}
               className={({ isActive }) =>
                 isActive
@@ -60,6 +61,7 @@ const Navbar = () => {
           <ul className="flex flex-col ">
             {navMenu.map((list, i) => (
               <NavLink
+                key={i}
                 to={list.link}
                 className={({ isActive }) =>
                   isActive

@@ -21,11 +21,12 @@ const Test = () => {
       .catch((err) => console.log("error fetching data", err));
   }, []);
 
-  const deleteLetter = (id) => {
+  const deleteLetter = async (id) => {
     if (window.confirm("Are you sure you want to delete the user record?")) {
-      axios
+      await axios
         .delete(`/delete-letter/${id}`)
         .then(() => {
+          console.log("Deleted item: ", id);
           alert(`Successfully deleted item ${id}`);
         })
         .catch((error) => console.log("error deleting item", error));
@@ -44,8 +45,8 @@ const Test = () => {
     setShowPopup(false);
   };
 
-  const handleUpdate = (formData) => {
-    axios
+  const handleUpdate = async (formData) => {
+    await axios
       .put(`update-letter/${selectedItem._id}`, formData)
       .then((res) => {
         //handle successful updat
@@ -79,10 +80,10 @@ const Test = () => {
                 </tr>
               </thead>
               <tbody>
-                {items.map((item, key) => (
+                {items.map((item) => (
                   <>
                     <tr
-                      key={key}
+                      key={item.id}
                       //onClick={() => handleItemClick(item)}
                       className="font-space"
                     >
